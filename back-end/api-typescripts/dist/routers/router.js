@@ -6,22 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const productController_1 = __importDefault(require("../controllers/productController"));
 let router = express_1.Router();
-let producController = new productController_1.default();
-router.get('/', (req, res, next) => {
-    producController.getList().then(data => {
-        res.json(data);
-    }).catch(err => {
-        next(err);
-    });
-});
-router.get('/find', (req, res, next) => {
-    producController.find({
-        name: 'SP 12'
-    }).then(data => {
-        res.json(data);
-    }).catch(err => {
-        next(err);
-    });
-});
+router.use('/Product', productController_1.default);
 exports.default = router;
 //# sourceMappingURL=router.js.map

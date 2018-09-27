@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mysql_1 = __importDefault(require("mysql"));
 const configConnect = {
-    host: '127.0.0.1',
+    host: 'localhost',
     port: 3306,
     ssl: {
         // DO NOT DO THIS
@@ -13,8 +13,8 @@ const configConnect = {
         rejectUnauthorized: false
     },
     user: 'root',
-    password: 'Abc12345',
-    database: 'react_native_ex1'
+    password: '123456',
+    database: 'example1'
 };
 const connect = mysql_1.default.createConnection(configConnect);
 let dbMySql = new Promise((resolve, reject) => {

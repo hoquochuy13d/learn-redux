@@ -1,6 +1,7 @@
 import dbMySql from '../databases/mySql';
-import {MysqlError} from 'mysql';
-class Service {
+import { MysqlError } from 'mysql';
+
+class Entity {
     private tableName: string;
     constructor(tableName: string){
         this.tableName = tableName;
@@ -9,7 +10,7 @@ class Service {
         return new Promise ((resolve,reject)=>{
             let strQuery = `SELECT * FROM ${this.tableName}`;
             dbMySql.then(db =>  {
-                db.query(strQuery,(err,data) => {
+                db.query(strQuery,(err:MysqlError,data) => {
                     if(err) {
                         reject(err)
                     }
@@ -18,7 +19,7 @@ class Service {
             })
         })
     }
-    find(filter:any){
+    find(filter:any) {
         let arr = Object.keys(filter);
         let where = '';
         if(arr.length > 0) {
@@ -33,10 +34,9 @@ class Service {
             }     
         }
         let strQuery = `SELECT * FROM ${this.tableName} ${where}`;
-        console.log(strQuery);
-        return new Promise ((resolve,reject)=>{
+        return new Promise((resolve,reject)=>{
             dbMySql.then(db =>  {
-                db.query(strQuery,(err,data) => {
+                db.query(strQuery,(err:MysqlError,data) => {
                     if(err) {
                         reject(err)
                     }
@@ -46,4 +46,4 @@ class Service {
         })
     }           
 }
-export default Service
+export default Entity

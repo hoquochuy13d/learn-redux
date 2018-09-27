@@ -1,7 +1,7 @@
 import mysql, {Connection,MysqlError} from 'mysql';
 
 const configConnect = {
-    host: '127.0.0.1',
+    host: 'localhost',
     port: 3306,
     ssl: {
         // DO NOT DO THIS
@@ -9,8 +9,8 @@ const configConnect = {
         rejectUnauthorized: false
     },
     user: 'root',
-    password: 'Abc12345',
-    database: 'react_native_ex1'
+    password: '123456',
+    database: 'example1'
 }
 const connect = mysql.createConnection(configConnect);
 
